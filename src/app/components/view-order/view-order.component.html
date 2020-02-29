@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col col-lg-2"></div>
+
+  
+  <div class="col col-lg-10">
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Buyer's Name</th>
+          <th scope="col">Shipping Address</th>
+          <th scope="col">City</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vo of viewOrder;let i=index" >
+          <td scope="row">{{i+1}}</td>
+          <td><h6 class="card-title">{{vo.fName +" "+ vo.lName}}</h6></td>
+          <td><p class="card-text">{{vo.street}}</p></td>
+          <td><p class="card-text">{{vo.city}}</p></td>
+          <td><p class="card-text">{{vo.rupee +"."+vo.paise | currency:'INR'}}</p></td>
+          <td><p class="card-text">{{vo.phone}}</p></td>
+        
+        </tr>
+       </tbody>
+    </table>
+
+  </div>
+
+</div>

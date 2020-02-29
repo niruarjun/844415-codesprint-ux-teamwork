@@ -1,0 +1,56 @@
+<div 
+    style="margin: 0px 250px 0px 250px; color: darkred; background-color: cadetblue; border-radius: 15px; 
+    float: left; width: min(60vw,80vw); padding: 30px;">
+   
+
+
+        <hr>
+        <div>
+            <h5 style="text-align: center;">Gift Card Place Order</h5>
+        </div>
+
+        <hr>
+    <div class="row">
+        <div class="col-lg-6">
+            <form #contactForm="ngForm" >
+
+                <div class="form-group">
+                    <label for="Cname"><b>Name</b></label>
+                    <input #Cname="ngModel" [(ngModel)]="contactModel.Cname"
+                        [class.is-invalid]="Cname.invalid && Cname.touched" name="Cname" type="text"
+                        class="form-control" id="Cname" required>
+                    <small class="text-danger" [class.d-none]="Cname.valid || Cname.untouched">
+                        This is required field</small>
+                </div>
+                <div class="form-group">
+                    <label for="mobile"><b>Mobile Number</b></label>
+                    <input #mobile="ngModel" [(ngModel)]="contactModel.mobile" name="mobile" id="mobile"
+                        [class.is-invalid]="mobile.invalid && mobile.touched" type="tel" class="form-control" required
+                        pattern="^\d{10}$">
+                    <div *ngIf="mobile.errors && (mobile.invalid && mobile.touched)">
+
+                        <small *ngIf="mobile.errors.required" class="text-danger">
+                            This is required field</small>
+                        <small *ngIf="mobile.errors.pattern" class="text-danger">
+                            Enter the valid mobile number</small>
+
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label for="comment"><b>Comments and Messages</b></label>
+                        <!-- <input #comment="ngModel" [(ngModel)]="contactModel.comment"
+                            [class.is-invalid]="comment.invalid && comment.touched" name="comment" type="text"
+                            class="form-control" required> -->
+
+                        <textarea class="form-control" #comment="ngModel" [(ngModel)]="contactModel.comment"
+                        [class.is-invalid]="comment.invalid && comment.touched" name="comment" id="comment" cols="50" rows="5" required></textarea>
+                        <small class="text-danger" [class.d-none]="comment.valid || comment.untouched">
+                            This is required field</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" [disabled]="!contactForm.valid" class="btn btn-warning">
+                    </div>
+                
+            </form>
+        </div>
+    </div>

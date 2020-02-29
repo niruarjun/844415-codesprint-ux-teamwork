@@ -1,0 +1,247 @@
+<div
+    style="float: left; width: min(60vw,150vw); margin: 0px 250px 0px 250px; color: darkred; background-color: cadetblue; border-radius: 15px; padding: 30px;">
+    <form [formGroup]="placeOrder" (ngSubmit)="onSubmitForm(placeOrder.value)">
+
+        <hr>
+        <div>
+            <h5 style="text-align: center;">Gift Card Place Order</h5>
+        </div>
+
+        <hr>
+
+        <div class="form-group row">
+            <div class="form-group col-sm-3">
+                <label for="amount" class="col-form-label"><b>Gift Card Amount</b></label>
+            </div>
+            <div class="col-sm-1">
+                <input [class.is-invalid]="placeOrder.get('rupee').invalid && placeOrder.get('rupee').touched" type="number" formControlName="rupee" id="amount" style="width: 50px;"><br>
+                <span>INR</span>
+                
+            </div>
+            <label>:</label>
+            <div class="col-sm-1">
+                <input type="number" formControlName="paise" style="width: 50px;"><br>
+                <span>PAISE</span>
+            </div>
+            <div *ngIf="placeOrder.get('rupee').errors && (placeOrder.get('rupee').invalid && placeOrder.get('rupee').touched)">
+                <small class="text-danger" *ngIf="placeOrder.get('rupee').errors.required">amount field is required</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="form-group col-sm-3">
+                <label for="receipentName" class="col-form-label"><b>Receipent Name</b></label>
+            </div>
+            <div class="col-sm-4">
+                <input [class.is-invalid]="placeOrder.get('rfName').invalid && placeOrder.get('rfName').touched" type="text" formControlName="rfName" id="receipentName" style="width: 250px;"><br>
+                <span>First Name</span>
+                <div *ngIf="placeOrder.get('rfName').errors && (placeOrder.get('rfName').invalid && placeOrder.get('rfName').touched)">
+                    <small class="text-danger" *ngIf="placeOrder.get('rfName').errors.required">name field is required</small>
+                    <small class="text-danger" *ngIf="placeOrder.get('rfName').errors.pattern">first letter should be <b>CAPITAL</b></small>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <input [class.is-invalid]="placeOrder.get('rlName').invalid && placeOrder.get('rlName').touched" type="text" formControlName="rlName" style="width: 250px;"><br>
+                <span>Last Name</span>
+                <div *ngIf="placeOrder.get('rlName').errors && (placeOrder.get('rlName').invalid && placeOrder.get('rlName').touched)">
+                    <small class="text-danger" *ngIf="placeOrder.get('rlName').errors.required">name field is required</small>
+                    <small class="text-danger" *ngIf="placeOrder.get('rlName').errors.pattern">first letter should be <b>CAPITAL</b></small>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="form-group">
+
+            <label for="street" class="col-form-label"><b>Shipping Address</b></label><br>
+
+            <div style="margin-left: 80px;">
+                <input type="text" formControlName="street" id="street" style="width: 555px;"><br>
+                <span>Street Address</span>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <input type="text" formControlName="city" style="width: 250px;"><br>
+                        <span>City</span>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <input type="text" formControlName="state" style="width: 250px;"><br>
+                        <span>State</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <select id="country" formControlName="country" style="width: 250px;">
+                            <option value="select country">select country</option>
+                            <option value="Afganistan">Afghanistan</option>
+                            <option value="Albania">Albania</option>
+                            <option value="Algeria">Algeria</option>
+                            <option value="American Samoa">American Samoa</option>
+                            <option value="Andorra">Andorra</option>
+                            <option value="Angola">Angola</option>
+                            <option value="Anguilla">Anguilla</option>
+                            <option value="Antigua & Barbuda">Antigua & Barbuda</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Armenia">Armenia</option>
+                            <option value="Aruba">Aruba</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Bosnia & Herzegovina">Bosnia & Herzegovina</option>
+                            <option value="Botswana">Botswana</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
+                            <option value="Brunei">Brunei</option>
+                            <option value="Bulgaria">Bulgaria</option>
+                            <option value="Burkina Faso">Burkina Faso</option>
+                            <option value="Burundi">Burundi</option>
+                            <option value="Cambodia">Cambodia</option>
+                            <option value="Cameroon">Cameroon</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Canary Islands">Canary Islands</option>
+                            <option value="Cape Verde">Cape Verde</option>
+                            <option value="Cayman Islands">Cayman Islands</option>
+                            <option value="Central African Republic">Central African Republic</option>
+                            <option value="Chad">Chad</option>
+                            <option value="Channel Islands">Channel Islands</option>
+                            <option value="Chile">Chile</option>
+                            <option value="China">China</option>
+                            <option value="Christmas Island">Christmas Island</option>
+                            <option value="Cocos Island">Cocos Island</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Comoros">Comoros</option>
+                            <option value="Congo">Congo</option>
+                            <option value="Cook Islands">Cook Islands</option>
+                            <option value="Costa Rica">Costa Rica</option>
+                            <option value="Cote DIvoire">Cote DIvoire</option>
+                            <option value="Croatia">Croatia</option>
+                            <option value="Cuba">Cuba</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="Hong Kong">Hong Kong</option>
+                            <option value="Hungary">Hungary</option>
+                            <option value="Iceland">Iceland</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="India">India</option>
+                            <option value="Iran">Iran</option>
+                            <option value="Iraq">Iraq</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="Isle of Man">Isle of Man</option>
+                            <option value="Israel">Israel</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Jamaica">Jamaica</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Jordan">Jordan</option>
+                            <option value="Korea North">Korea North</option>
+                            <option value="Korea Sout">Korea South</option>
+                            <option value="Kuwait">Kuwait</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Netherland Antilles">Netherland Antilles</option>
+                            <option value="Netherlands">Netherlands (Holland, Europe)</option>
+                            <option value="Nevis">Nevis</option>
+                            <option value="New Caledonia">New Caledonia</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Romania">Romania</option>
+                            <option value="Russia">Russia</option>
+                            <option value="Somalia">Somalia</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Sri Lanka">Sri Lanka</option>
+                            <option value="Sudan">Sudan</option>
+                            <option value="Suriname">Suriname</option>
+                            <option value="Swaziland">Swaziland</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Syria">Syria</option>
+                            <option value="Tahiti">Tahiti</option>
+                            <option value="Taiwan">Taiwan</option>
+                            <option value="Tajikistan">Tajikistan</option>
+                            <option value="Tanzania">Tanzania</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Uganda">Uganda</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="United Arab Erimates">United Arab Emirates</option>
+                            <option value="United States of America">United States of America</option>
+                        </select>
+                        <span>Country</span>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <input type="tel" formControlName="pincode" style="width: 250px;"><br>
+                        <span>Pincode</span>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+
+
+            <div class="form-group row">
+                <div class="form-group col-sm-3">
+                    <label for="fName" class="col-form-label"><b>Buyer's Name</b></label>
+                </div>
+                <div class="col-sm-4">
+                    <input [class.is-invalid]="placeOrder.get('fName').invalid && placeOrder.get('fName').touched" type="text" formControlName="fName" id="fName" style="width: 250px;"><br>
+                    <span>First Name</span>
+                    <div *ngIf="placeOrder.get('fName').errors && (placeOrder.get('fName').invalid && placeOrder.get('fName').touched)">
+                        <small class="text-danger" *ngIf="placeOrder.get('fName').errors.required">name field is required</small>
+                        <small class="text-danger" *ngIf="placeOrder.get('fName').errors.pattern">first letter should be <b>CAPITAL</b></small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <input [class.is-invalid]="placeOrder.get('lName').invalid && placeOrder.get('lName').touched" type="text" formControlName="lName" style="width: 250px;"><br>
+                    <span>Last Name</span>
+                    <div *ngIf="placeOrder.get('lName').errors && (placeOrder.get('lName').invalid && placeOrder.get('lName').touched)">
+                        <small class="text-danger" *ngIf="placeOrder.get('lName').errors.required">name field is required</small>
+                        <small class="text-danger" *ngIf="placeOrder.get('lName').errors.pattern">first letter should be <b>CAPITAL</b></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group col-sm-3">
+                    <label for="phone" class="col-form-label"><b>Phone</b></label>
+                </div>
+                <div class="col-sm-4">
+                    <input pattern="^\d{10}$" formControlName="phone" type="tel" id="phone" class="form-control">
+                    <div *ngIf="placeOrder.get('phone').errors && (placeOrder.get('phone').invalid && placeOrder.get('phone').touched)">
+                        <small class="text-danger" *ngIf="placeOrder.get('phone').errors.required">phone field is required</small>
+                        <small class="text-danger" *ngIf="placeOrder.get('phone').errors.pattern">max <b>10</b></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group col-sm-3">
+                    <label for="email" class="col-form-label"><b>Email</b></label>
+                </div>
+                <div class="col-sm-4">
+                    <input [class.is-invalid]="placeOrder.get('email').invalid && placeOrder.get('email').touched" formControlName="email" type="email"
+                        id="email" class="form-control">
+                
+                <div *ngIf="placeOrder.get('email').errors && (placeOrder.get('email').invalid && placeOrder.get('email').touched)">
+                    <small class="text-danger" *ngIf="placeOrder.get('email').errors.required">email field is required</small>
+                    <small class="text-danger" *ngIf="placeOrder.get('email').errors.pattern">please provide a valid
+                        email address <b>(example@asd.com) </b></small>
+                </div>
+            </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group col-sm-9"></div>
+                <div class="col-sm-3">
+                    <button type="submit" value="Place Order" class="btn btn-warning">Place
+                        Order</button>
+                </div>
+            </div>
+
+        
+        </div>
+    </form>
+
+
+</div>
+<!-- 
+[disabled]="!placeOrder.valid" -->
